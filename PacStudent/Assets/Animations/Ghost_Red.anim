@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ghost_Scared
+  m_Name: Ghost_Red
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,9 +20,9 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 1239633659, guid: b4e1530c5b8981e4599d991ee5496814, type: 3}
+      value: {fileID: -1529316828, guid: 480c665ae7327fd49a33e970695743e3, type: 3}
     - time: 0.1
-      value: {fileID: 1312622318, guid: b4e1530c5b8981e4599d991ee5496814, type: 3}
+      value: {fileID: -409880316, guid: 480c665ae7327fd49a33e970695743e3, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -42,8 +42,8 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 1239633659, guid: b4e1530c5b8981e4599d991ee5496814, type: 3}
-    - {fileID: 1312622318, guid: b4e1530c5b8981e4599d991ee5496814, type: 3}
+    - {fileID: -1529316828, guid: 480c665ae7327fd49a33e970695743e3, type: 3}
+    - {fileID: -409880316, guid: 480c665ae7327fd49a33e970695743e3, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
