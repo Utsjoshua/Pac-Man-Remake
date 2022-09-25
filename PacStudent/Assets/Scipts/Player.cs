@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     public AudioSource sound;
     public AudioClip footstepSound;
     public AudioClip Collecting;
+    public AudioClip DeathSound;
+    public AudioSource Background;
 
     Animator animator;
 
@@ -77,10 +79,21 @@ public class Player : MonoBehaviour
 
     void PlaySound()
     {
-        if (Movement != new Vector3(0.0f, 0.0f, 0.0f)){
+        if (movementSqrMagnitude > 0.25f && !sound.isPlaying){
             sound.clip = footstepSound;
+
+            sound.volume = movementSqrMagnitude;
             sound.Play();
-            Debug.Log("Played");
+            Background.volume = 0.5f;
+        }
+        else if (movementSqrMagnitude <= 0.3f && sound.isPlaying){
+            sound.Stop();
+            Background.volume = 1.0f;
+
+        }
+        if (dead == true){
+            sound.clip = DeathSound;
+            sound.Play();
         }
     }
 

@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class GameRule : MonoBehaviour
 {
-    public AudioSource Audio;
-    public AudioClip StartMusic;
+    public AudioSource Background;
+    public AudioClip StartBackground;
     public AudioClip NormalBackground;
     public AudioClip ScaredBackground;
     public AudioClip DeadBackground;
-    public AudioClip DeathSound;
 
     public Player PacStudent;
     public Enemy Ghost;
@@ -30,29 +29,34 @@ public class GameRule : MonoBehaviour
                 Debug.Log("Game Starting");
                 begin = true;
                 Time.timeScale = 1.0f;
-                Audio.PlayOneShot(StartMusic, 1.0f);
+                Background.clip = StartBackground;
+                Background.Play();
                 NewGame();
                 Debug.Log("Q - kill player, Z - Scare Ghost");
             }
         }
         else{
             if (PacStudent.GetAlive()){
-                if(!Audio.isPlaying){
-                    if (Ghost.IsDead()){
-                        Audio.clip = DeadBackground;
+                if(!Background.isPlaying){
+                    if(Ghost.IsDead() && Background.clip == ScaredBackground){
+                        Background.Stop();
+                        Background.clip = DeadBackground;
                     }
-                    else if (Ghost.IsScared()){
-                        Audio.clip = ScaredBackground;
+                    else if (Ghost.IsScared() && Background.clip == NormalBackground){
+                        Background.Stop();
+                        Background.clip = ScaredBackground;
                     }
-                    else if (Ghost.IsNormal()){
-                        Audio.clip = NormalBackground;
+                    else if (Ghost.IsNormal() && Background.clip == ScaredBackground || Ghost.IsNormal() && Background == DeadBackground){
+                        Background.Stop();
+                        Background.clip = NormalBackground;
                     }
-                Audio.Play();   
+                    else if (Ghost.IsNormal() && Background.clip == StartBackground){
+                        Background.clip = NormalBackground;
+                    }
+                    Background.Play();
                 }
             }
             else {
-                Audio.clip = DeathSound;
-                Audio.PlayOneShot(DeathSound, 1.0f);
                 ResetGame();
             }
 

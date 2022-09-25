@@ -103,6 +103,8 @@ MonoBehaviour:
   sound: {fileID: 7150774831705097888}
   footstepSound: {fileID: 8300000, guid: 31976cec7a56faa4db01815d490ad31b, type: 3}
   Collecting: {fileID: 8300000, guid: 16e425ff6eaad0d41bbf196c089284c9, type: 3}
+  DeathSound: {fileID: 8300000, guid: 26e1b95e04d5d494ca4c6c074aa3e2df, type: 3}
+  Background: {fileID: 0}
 --- !u!82 &7150774831705097888
 AudioSource:
   m_ObjectHideFlags: 0
@@ -114,9 +116,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 2
   Loop: 0
   Mute: 0
   Spatialize: 0
