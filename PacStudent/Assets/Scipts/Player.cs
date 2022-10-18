@@ -113,6 +113,10 @@ public class Player : MonoBehaviour
     public bool GetAlive(){
         return !dead;
     }
+
+    public float getMovementSqr(){
+        return movementSqrMagnitude;
+    }
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -123,7 +127,7 @@ public class Player : MonoBehaviour
         GetMovementInput();
         CharacterPosition();
         Animation();
-        PlaySound();
+        //PlaySound();
         //placeholder
         if (Input.GetKeyDown(KeyCode.Q)){
             Dead();

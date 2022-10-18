@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+    public AudioSource Title;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,5 +21,14 @@ public class UIManager : MonoBehaviour
     public void LoadFirstlevel(){
         SceneManager.LoadScene(0);
         DontDestroyOnLoad(gameObject);
+        Title.Pause();
+        Title.Stop();
     }
+
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode){
+        if (scene.buildIndex != 0){
+            Title.Play();
+        }
+    }
+
 }
