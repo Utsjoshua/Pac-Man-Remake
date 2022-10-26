@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public AudioSource Title;
+    public AudioSource TitleMusic;
     private static GameObject obj;
 
     // Start is called before the first frame update
@@ -29,25 +29,23 @@ public class UIManager : MonoBehaviour
     public void LoadFirstlevel(){
         SceneManager.LoadScene(1);
         DontDestroyOnLoad(gameObject);
-        Title.Pause();
-        Title.Stop();
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        TitleMusic.Pause();
+        TitleMusic.Stop();
     }
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode){
         if (scene.buildIndex == 0){
-            Title.Play();
+            TitleMusic.Play();
             GameObject Level1Button = GameObject.FindGameObjectWithTag("Level1Button");
             Button btn = Level1Button.GetComponent<Button>();
 		    btn.onClick.AddListener(LoadFirstlevel);
         }
         if (scene.buildIndex == 1){
-            Title.Pause();
-            Title.Stop();
+            TitleMusic.Pause();
+            TitleMusic.Stop();
             GameObject Exitbutton = GameObject.FindGameObjectWithTag("ExitButton");
             Button btn = Exitbutton.GetComponent<Button>();
-		    btn.onClick.AddListener(Exit);
-            
+		    btn.onClick.AddListener(Exit);            
         }
     }
 
@@ -56,4 +54,14 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(0);
         Debug.Log("Exit");
     }
+
+    private void OnEnable()
+     {
+         SceneManager.sceneLoaded += OnSceneLoaded;
+     }
+     private void OnDisable()
+     {
+         SceneManager.sceneLoaded -= OnSceneLoaded;
+     }
+
 }

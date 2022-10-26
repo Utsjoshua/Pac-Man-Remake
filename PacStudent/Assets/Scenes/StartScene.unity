@@ -287,7 +287,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1523249062}
+      - m_Target: {fileID: 1523249065}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: LoadFirstlevel
         m_Mode: 1
@@ -1451,8 +1451,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1523249063}
-  - component: {fileID: 1523249062}
   - component: {fileID: 1523249064}
+  - component: {fileID: 1523249065}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -1460,19 +1460,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1523249062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1523249061}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04bdf0d49fa1ed84f8446e612343e13a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Title: {fileID: 1523249064}
 --- !u!4 &1523249063
 Transform:
   m_ObjectHideFlags: 0
@@ -1584,6 +1571,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1523249065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523249061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04bdf0d49fa1ed84f8446e612343e13a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TitleMusic: {fileID: 1523249064}
 --- !u!1 &1708216372
 GameObject:
   m_ObjectHideFlags: 0
