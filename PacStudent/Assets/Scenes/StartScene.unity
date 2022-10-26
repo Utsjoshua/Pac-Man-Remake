@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 212291194}
   m_Layer: 5
   m_Name: Level1Button
-  m_TagString: Untagged
+  m_TagString: Level1Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
