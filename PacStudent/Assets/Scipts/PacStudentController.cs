@@ -10,24 +10,26 @@ private Vector3 Movement;
     private float xAxis;
     private float yAxis;
     private bool dead = false;
-
+    private string playerinput;
+    private string lastinput;
+    private string currentinput;
     Animator animator;
 
-    void GetMovementInput()
+    void GetMovementInput(string direction)
     {
-        xAxis = Input.GetAxis("Horizontal");
-        yAxis = Input.GetAxis("Vertical");
-        Movement = new Vector3(xAxis, yAxis, 0);
-        Movement = Vector3.ClampMagnitude(Movement, 3.0f);
-        movementSqrMagnitude = Movement.sqrMagnitude;
-        //Debug.Log("Movement = " + Movement);
+        // xAxis = Input.GetAxis("Horizontal");
+        // yAxis = Input.GetAxis("Vertical");
+        // Movement = new Vector3(xAxis, yAxis, 0);
+        // Movement = Vector3.ClampMagnitude(Movement, 3.0f);
+        // movementSqrMagnitude = Movement.sqrMagnitude;
+        // //Debug.Log("Movement = " + Movement);
     }
 
-    void CharacterPosition()
-    {
-        Vector3 move = Movement * walkSpeed * Time.deltaTime;
-        transform.Translate(move, Space.World);
-    }
+    // void CharacterPosition()
+    // {
+    //     Vector3 move = Movement * walkSpeed * Time.deltaTime;
+    //     transform.Translate(move, Space.World);
+    // }
 
     void Animation()
     {
@@ -97,8 +99,37 @@ private Vector3 Movement;
 
     void Update()
     {
-        GetMovementInput();
-        CharacterPosition();
+        //GetMovementInput();
+        //CharacterPosition();
+
+        if (Input.GetKeyDown(KeyCode.A)){
+            Debug.Log("A");
+            lastinput = "A";
+            currentinput = "A";
+            Movement = Vector3.Lerp(gameObject.transform.position, new Vector3(-1,0,0), 0.5f);
+        }
+            
+        if (Input.GetKeyDown(KeyCode.D)){
+            Debug.Log("D");
+            lastinput = "D";
+            currentinput = "D";
+            Movement = Vector3.Lerp(gameObject.transform.position, new Vector3(1,0,0), 0.5f);
+        }
+            
+        if (Input.GetKeyDown(KeyCode.S)){
+            Debug.Log("S");
+            lastinput = "S";
+            currentinput = "S";
+            Movement = Vector3.Lerp(gameObject.transform.position, new Vector3(0,-1,0), 0.5f);
+        }
+           
+        if (Input.GetKeyDown(KeyCode.W)){
+            Debug.Log("W");
+            lastinput = "W";
+            currentinput = "W";
+            Movement = Vector3.Lerp(gameObject.transform.position, new Vector3(0,1,0), 0.5f);
+        }
+            
         Animation();
         if (Input.GetKeyDown(KeyCode.Q)){
             Dead();
