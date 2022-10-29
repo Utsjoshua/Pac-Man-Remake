@@ -5,8 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
-    public Player PacStudent;
-    public Enemy Ghost;
+    public PacStudentController PacStudent;
+    //public Enemy Ghost;
     //private int lives;
     //private int points;
     private bool begin = false;

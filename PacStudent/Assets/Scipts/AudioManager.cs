@@ -10,7 +10,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] playerSound;
     public AudioClip[] BackgroundSound;
     public GameManager Game;
-    public Player PacStudent;
+    public PacStudentController PacStudent;
     public Enemy Ghost;
     
     void Start()

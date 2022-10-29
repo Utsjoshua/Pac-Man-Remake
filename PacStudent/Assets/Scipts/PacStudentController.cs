@@ -2,21 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PacStudentController : MonoBehaviour
 {
-
-    private Vector3 Movement;
+private Vector3 Movement;
     private float movementSqrMagnitude;
     public float walkSpeed = 5.0f;
     private float xAxis;
     private float yAxis;
     private bool dead = false;
-
-    public AudioSource sound;
-    public AudioClip footstepSound;
-    public AudioClip Collecting;
-    public AudioClip DeathSound;
-    public AudioSource Background;
 
     Animator animator;
 
@@ -77,26 +70,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    void PlaySound()
-    {
-        if (movementSqrMagnitude > 0.25f && !sound.isPlaying){
-            sound.clip = footstepSound;
-
-            sound.volume = movementSqrMagnitude;
-            sound.Play();
-            Background.volume = 0.5f;
-        }
-        else if (movementSqrMagnitude <= 0.3f && sound.isPlaying){
-            sound.Stop();
-            Background.volume = 1.0f;
-
-        }
-        if (dead == true){
-            sound.clip = DeathSound;
-            sound.Play();
-        }
-    }
-
     void Dead(){
         //placeholder
         dead = true;
@@ -127,8 +100,6 @@ public class Player : MonoBehaviour
         GetMovementInput();
         CharacterPosition();
         Animation();
-        //PlaySound();
-        //placeholder
         if (Input.GetKeyDown(KeyCode.Q)){
             Dead();
         }
