@@ -14,16 +14,13 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 0.0f;
-        Debug.Log("Press Any Button To Start");
     }
 
     void Update()
     {
         if (begin == false){
-            if (Input.anyKeyDown){
-                Debug.Log("Game Starting");
-                StartCoroutine(WaitAfterIntro());
-            }
+            Debug.Log("Game Starting");
+            StartCoroutine(WaitAfterIntro());
         }
         else{
             if (PacStudent.GetAlive()){

@@ -44,7 +44,7 @@ public class AudioManager : MonoBehaviour
     }
 
     public void BackgoundMusic(){
-        if (Input.anyKey && Game.getStart() == false){
+        if (Game.getStart() == false){
             Background.clip = BackgroundSound[0];
             Background.Play();
         }
