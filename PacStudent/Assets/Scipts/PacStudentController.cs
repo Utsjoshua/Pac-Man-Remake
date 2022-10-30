@@ -12,17 +12,20 @@ private Vector3 Movement;
     private bool dead = false;
     private string lastinput;
     private string currentinput;
+    private float HorizontalDirection = 0.0f;
+    private float VerticalDirection = 0.0f;
     Animator animator;
 
-    void GetMovementInput()
-    {
-        // xAxis = Input.GetAxis("Horizontal");
-        // yAxis = Input.GetAxis("Vertical");
-        // Movement = new Vector3(xAxis, yAxis, 0);
-        // Movement = Vector3.ClampMagnitude(Movement, 3.0f);
-        // movementSqrMagnitude = Movement.sqrMagnitude;
-        // //Debug.Log("Movement = " + Movement);
-    }
+    // void GetMovementInput()
+    // {
+    //     xAxis = Input.GetAxis("Horizontal");
+    //     yAxis = Input.GetAxis("Vertical");
+    //     Movement = new Vector3(xAxis, yAxis, 0);
+    //     Movement = Vector3.ClampMagnitude(Movement, 3.0f);
+    //     movementSqrMagnitude = Movement.sqrMagnitude;
+    //     Debug.Log(xAxis + ", " + yAxis);
+    //     Debug.Log("Movement = " + Movement);
+    // }
 
     // void CharacterPosition()
     // {
@@ -39,25 +42,25 @@ private Vector3 Movement;
             animator.SetBool("IsUp", false);
             animator.SetBool("IsDead", true);
         }
-        if (xAxis < 0){
+        if (HorizontalDirection < 0){
             animator.SetBool("IsLeft", true);
             animator.SetBool("IsRight", false);
             animator.SetBool("IsDown", false);
             animator.SetBool("IsUp", false);
         }
-        else if (xAxis > 0){
+        else if (HorizontalDirection > 0){
             animator.SetBool("IsRight", true);
             animator.SetBool("IsLeft", false);
             animator.SetBool("IsDown", false);
             animator.SetBool("IsUp", false);
         }
-        else if (yAxis < 0){
+        else if (VerticalDirection < 0){
             animator.SetBool("IsDown", true);
             animator.SetBool("IsRight", false);
             animator.SetBool("IsLeft", false);
             animator.SetBool("IsUp", false);
         }
-        else if (yAxis > 0){
+        else if (VerticalDirection > 0){
             animator.SetBool("IsUp", true);
             animator.SetBool("IsLeft", false);
             animator.SetBool("IsRight", false);
@@ -97,49 +100,48 @@ private Vector3 Movement;
 
     void Update()
     {
-        //GetMovementInput();
-        //CharacterPosition();
+        // GetMovementInput();
+        // CharacterPosition();
 
         if (Input.GetKeyDown(KeyCode.A)){
             Debug.Log("A");
             lastinput = "A";
             currentinput = "A";
-            Movement = Vector3.Lerp(transform.position, new Vector3(transform.position.x -1, transform.position.y, transform.position.z), 0.05f);
-            Vector3 move = Movement * walkSpeed * Time.deltaTime;
-            transform.Translate(move, Space.World);
-            //Movement = Vector3.Lerp(gameObject.transform.position, new Vector3(-1,0,0), 0.5f);
+            HorizontalDirection = -1.0f;
+            VerticalDirection = 0.0f;
         }
             
         if (Input.GetKeyDown(KeyCode.D)){
             Debug.Log("D");
             lastinput = "D";
             currentinput = "D";
-            Movement = Vector3.Lerp(transform.position, new Vector3(transform.position.x +1, transform.position.y, transform.position.z), 0.05f);
-            Vector3 move = Movement * walkSpeed * Time.deltaTime;
-            transform.Translate(move, Space.World);
-            //Movement = Vector3.Lerp(gameObject.transform.position, new Vector3(1,0,0), 0.5f);
+            HorizontalDirection = 1.0f;
+            VerticalDirection = 0.0f;
         }
             
         if (Input.GetKeyDown(KeyCode.S)){
             Debug.Log("S");
             lastinput = "S";
             currentinput = "S";
-            Movement = Vector3.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y -1, transform.position.z), 0.05f);
-            Vector3 move = Movement * walkSpeed * Time.deltaTime;
-            transform.Translate(move, Space.World);
-            //Movement = Vector3.Lerp(gameObject.transform.position, new Vector3(0,-1,0), 0.5f);
+            HorizontalDirection = 0.0f;
+            VerticalDirection = -1.0f;
         }
            
         if (Input.GetKeyDown(KeyCode.W)){
             Debug.Log("W");
             lastinput = "W";
             currentinput = "W";
-            Movement = Vector3.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y +1, transform.position.z), 0.05f);
-            Vector3 move = Movement * walkSpeed * Time.deltaTime;
-            transform.Translate(move, Space.World);
-            //Movement = Vector3.Lerp(gameObject.transform.position, new Vector3(0,1,0), 0.5f);
+            HorizontalDirection = 0.0f;
+            VerticalDirection = 1.0f;
         }
-            
+
+        Movement = new Vector3(HorizontalDirection, VerticalDirection, 0);
+        Movement = Vector3.ClampMagnitude(Movement, 3.0f);
+        movementSqrMagnitude = Movement.sqrMagnitude;
+
+        Vector3 move = Movement * walkSpeed * Time.deltaTime;
+        transform.Translate(move, Space.World);
+
         Animation();
         if (Input.GetKeyDown(KeyCode.Q)){
             Dead();
