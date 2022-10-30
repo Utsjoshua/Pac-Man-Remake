@@ -10418,6 +10418,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1731498535, guid: 4d4a70c4e15f8e64a9e80a96aabcfd1c, type: 3}
+      propertyPath: game
+      value: 
+      objectReference: {fileID: 877996489}
     - target: {fileID: 7150774831705097890, guid: 4d4a70c4e15f8e64a9e80a96aabcfd1c, type: 3}
       propertyPath: m_Name
       value: Stickman

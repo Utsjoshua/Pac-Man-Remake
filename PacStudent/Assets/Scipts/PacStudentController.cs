@@ -15,6 +15,7 @@ private Vector3 Movement;
     private float HorizontalDirection = 0.0f;
     private float VerticalDirection = 0.0f;
     Animator animator;
+    public GameManager game;
 
     void Animation()
     {
@@ -83,51 +84,60 @@ private Vector3 Movement;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A)){
-            Debug.Log("A");
-            lastinput = "A";
-            currentinput = "A";
-            HorizontalDirection = -1.0f;
-            VerticalDirection = 0.0f;
-        }
+        if (game.getIntro()){
+            if (Input.GetKeyDown(KeyCode.A)){
+                Debug.Log("A");
+                lastinput = "A";
+                currentinput = "A";
+                HorizontalDirection = -1.0f;
+                VerticalDirection = 0.0f;
+             }
             
-        if (Input.GetKeyDown(KeyCode.D)){
-            Debug.Log("D");
-            lastinput = "D";
-            currentinput = "D";
-            HorizontalDirection = 1.0f;
-            VerticalDirection = 0.0f;
-        }
+            if (Input.GetKeyDown(KeyCode.D)){
+                Debug.Log("D");
+                lastinput = "D";
+                currentinput = "D";
+                HorizontalDirection = 1.0f;
+                VerticalDirection = 0.0f;
+            }
             
-        if (Input.GetKeyDown(KeyCode.S)){
-            Debug.Log("S");
-            lastinput = "S";
-            currentinput = "S";
-            HorizontalDirection = 0.0f;
-            VerticalDirection = -1.0f;
-        }
+            if (Input.GetKeyDown(KeyCode.S)){
+                Debug.Log("S");
+                lastinput = "S";
+                currentinput = "S";
+                HorizontalDirection = 0.0f;
+                VerticalDirection = -1.0f;
+            }
            
-        if (Input.GetKeyDown(KeyCode.W)){
-            Debug.Log("W");
-            lastinput = "W";
-            currentinput = "W";
-            HorizontalDirection = 0.0f;
-            VerticalDirection = 1.0f;
+            if (Input.GetKeyDown(KeyCode.W)){
+                Debug.Log("W");
+                lastinput = "W";
+                currentinput = "W";
+                HorizontalDirection = 0.0f;
+                VerticalDirection = 1.0f;
+            }
+
+            Movement = new Vector3(HorizontalDirection, VerticalDirection, 0);
+            Movement = Vector3.ClampMagnitude(Movement, 3.0f);
+            movementSqrMagnitude = Movement.sqrMagnitude;
+
+            //Vector3 move = Movement * walkSpeed * Time.deltaTime;
+            //transform.Translate(move, Space.World);
+
+            if (lastinput == "A" || lastinput == "S" || lastinput == "D" || lastinput == "W"){
+                //placeholder if
+            }
+            else if (currentinput == "A" || currentinput == "S" || currentinput == "D" || currentinput == "W"){
+                //placeholder else if
+            }
+
+            Vector3 NextPos = new Vector3(gameObject.transform.position.x + HorizontalDirection, gameObject.transform.position.y + VerticalDirection, gameObject.transform.position.z);
+            gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, NextPos, 0.04f);
+
+            Animation();
+            if (Input.GetKeyDown(KeyCode.Q)){
+                Dead();
+            }
         }
-
-        Movement = new Vector3(HorizontalDirection, VerticalDirection, 0);
-        Movement = Vector3.ClampMagnitude(Movement, 3.0f);
-        movementSqrMagnitude = Movement.sqrMagnitude;
-
-        //Vector3 move = Movement * walkSpeed * Time.deltaTime;
-        //transform.Translate(move, Space.World);
-
-        Vector3 NextPos = new Vector3(gameObject.transform.position.x + HorizontalDirection, gameObject.transform.position.y + VerticalDirection, gameObject.transform.position.z);
-        gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, NextPos, 0.05f);
-
-        Animation();
-        if (Input.GetKeyDown(KeyCode.Q)){
-            Dead();
-        }
-    }
+    }   
 }

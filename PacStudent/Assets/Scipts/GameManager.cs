@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     //private int lives;
     //private int points;
     private bool begin = false;
+    private bool introDone = false;
 
     void Start()
     {
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
         begin = true;
         yield return new WaitForSecondsRealtime(5);
         Time.timeScale = 1.0f;
+        introDone = true;
         NewGame();
         Debug.Log("Q - kill player, Z - Scare Ghost");
     }
@@ -49,10 +51,15 @@ public class GameManager : MonoBehaviour
 
     private void ResetGame(){
         begin = false;
+        introDone = false;
     }
 
     public bool getStart(){
         return begin;
+    }
+
+    public bool getIntro(){
+        return introDone;
     }
 }
 
