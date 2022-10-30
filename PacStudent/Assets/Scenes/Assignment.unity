@@ -10422,6 +10422,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stickman
       objectReference: {fileID: 0}
+    - target: {fileID: 7150774831705097918, guid: 4d4a70c4e15f8e64a9e80a96aabcfd1c, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7150774831705097918, guid: 4d4a70c4e15f8e64a9e80a96aabcfd1c, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7150774831705097918, guid: 4d4a70c4e15f8e64a9e80a96aabcfd1c, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7150774831705097919, guid: 4d4a70c4e15f8e64a9e80a96aabcfd1c, type: 3}
       propertyPath: m_RootOrder
       value: 1

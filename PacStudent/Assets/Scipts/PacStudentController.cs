@@ -16,23 +16,6 @@ private Vector3 Movement;
     private float VerticalDirection = 0.0f;
     Animator animator;
 
-    // void GetMovementInput()
-    // {
-    //     xAxis = Input.GetAxis("Horizontal");
-    //     yAxis = Input.GetAxis("Vertical");
-    //     Movement = new Vector3(xAxis, yAxis, 0);
-    //     Movement = Vector3.ClampMagnitude(Movement, 3.0f);
-    //     movementSqrMagnitude = Movement.sqrMagnitude;
-    //     Debug.Log(xAxis + ", " + yAxis);
-    //     Debug.Log("Movement = " + Movement);
-    // }
-
-    // void CharacterPosition()
-    // {
-    //     Vector3 move = Movement * walkSpeed * Time.deltaTime;
-    //     transform.Translate(move, Space.World);
-    // }
-
     void Animation()
     {
         if (dead == true){
@@ -100,9 +83,6 @@ private Vector3 Movement;
 
     void Update()
     {
-        // GetMovementInput();
-        // CharacterPosition();
-
         if (Input.GetKeyDown(KeyCode.A)){
             Debug.Log("A");
             lastinput = "A";
@@ -139,8 +119,11 @@ private Vector3 Movement;
         Movement = Vector3.ClampMagnitude(Movement, 3.0f);
         movementSqrMagnitude = Movement.sqrMagnitude;
 
-        Vector3 move = Movement * walkSpeed * Time.deltaTime;
-        transform.Translate(move, Space.World);
+        //Vector3 move = Movement * walkSpeed * Time.deltaTime;
+        //transform.Translate(move, Space.World);
+
+        Vector3 NextPos = new Vector3(gameObject.transform.position.x + HorizontalDirection, gameObject.transform.position.y + VerticalDirection, gameObject.transform.position.z);
+        gameObject.transform.position = Vector3.Lerp(gameObject.transform.position, NextPos, 0.05f);
 
         Animation();
         if (Input.GetKeyDown(KeyCode.Q)){
